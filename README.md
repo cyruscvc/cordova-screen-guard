@@ -30,52 +30,6 @@ Instead, this plugin detects events so your application can react accordingly.
 
 ---
 
-## Folder Structure
-
-```
-cordova-screen-guard/
-│
-├── plugin.xml
-│
-├── src/
-│   ├── android/
-│   │   └── ScreenGuard.java
-│   └── ios/
-│       └── ScreenGuard.m
-│
-└── www/
-    └── screenguard.js
-```
-
----
-
-## Installation
-
-### Cordova CLI
-
-```
-cordova plugin add cordova-screen-guard
-```
-
-or from local folder:
-
-```
-cordova plugin add ./cordova-screen-guard
-```
-
-### OutSystems (MABS)
-
-1. Create a Mobile Plugin Module
-2. Add the plugin files to the module
-3. Set each file to "Copy to Target Directory"
-4. Add the plugin ID inside Extensibility Configurations:
-
-```
-cordova-screen-guard
-```
-
----
-
 ## Usage
 
 Initialize the plugin once (e.g., on app start):
@@ -135,50 +89,6 @@ UIScreen.main.isCaptured
 ```
 
 Events are forwarded to JavaScript through the callback function used in `ScreenGuard.start()`.
-
----
-
-## Optional UI Protection (For iOS)
-
-You can blur sensitive content:
-
-```css
-.blur-sensitive {
-    filter: blur(16px);
-    transition: 0.3s;
-}
-```
-
-Or add a black overlay:
-
-```css
-#screenGuardOverlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: black;
-    opacity: 0.9;
-    z-index: 99999;
-}
-```
-
----
-
-## Testing
-
-### Android
-
-* Attempt to take a screenshot
-* Start a screen recording
-* Open recent apps view
-
-Screen capture should be fully blocked.
-
-### iOS
-
-* Take a screenshot (event should fire)
-* Start recording (event should fire)
-* Stop recording (event should fire)
 
 ---
 
