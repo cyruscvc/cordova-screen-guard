@@ -1,16 +1,28 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         id="cordova-screen-guard"
-        version="1.0.0">
+        version="1.1.0">
 
     <name>Screen Guard</name>
-    <description>Detect screenshot & screen recording on iOS</description>
+    <description>Prevents screenshots on Android, detects screenshots & screen recording on iOS.</description>
 
     <js-module src="www/screenguard.js" name="ScreenGuard">
         <clobbers target="ScreenGuard" />
     </js-module>
 
+    <!-- iOS -->
     <platform name="ios">
         <source-file src="src/ios/ScreenGuard.m" />
+    </platform>
+
+    <!-- ANDROID -->
+    <platform name="android">
+        <source-file src="src/android/ScreenGuard.java" target-dir="src/com/cordova/screenguard" />
+
+        <!-- We need to modify the main activity to apply FLAG_SECURE -->
+        <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
+            <activity android:windowSoftInputMode="adjustResize" />
+        </config-file>
+
     </platform>
 
 </plugin>
