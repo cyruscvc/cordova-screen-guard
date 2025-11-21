@@ -32,6 +32,10 @@ public class ScreenGuard extends CordovaPlugin {
             enableSecureFlag();
             callbackContext.success();
             return true;
+        } else if (action.equals("startObservers")) {
+            // No-op for Android
+            callbackContext.success();
+            return true;
         }
 
         callbackContext.error("Unknown action: " + action);
