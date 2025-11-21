@@ -11,18 +11,17 @@
 }
 
 - (void)startObservers {
-
     // Screenshot detection
     [[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(onScreenshot)
-        name:UIApplicationUserDidTakeScreenshotNotification
-        object:nil];
+                                             selector:@selector(onScreenshot)
+                                                 name:UIApplicationUserDidTakeScreenshotNotification
+                                               object:nil];
 
     // Screen recording detection
     [[UIScreen mainScreen] addObserver:self
-        forKeyPath:@"captured"
-        options:NSKeyValueObservingOptionNew
-        context:nil];
+                            forKeyPath:@"captured"
+                               options:NSKeyValueObservingOptionNew
+                               context:nil];
 }
 
 - (void)onScreenshot {
@@ -44,10 +43,17 @@
 }
 
 - (void)sendEvent:(NSString *)eventName {
-    NSString *js = [NSString stringWithFormat:
-        @"window.SCREEN_GUARD_CB && window.SCREEN_GUARD_CB('%@');", eventName];
-
+    NSString *js = [NSString stringWithFormat:@"window.SCREEN_GUARD_CB && window.SCREEN_GUARD_CB('%@');", eventName];
     [self.commandDelegate evalJs:js];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    @try {
+        [[UIScreen mainScreen] removeObserver:self forKeyPath:@"captured"];
+    } @catch (NSException *exception) {
+        // ignore
+    }
 }
 
 @end
