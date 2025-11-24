@@ -1,4 +1,4 @@
-package com.cordova.screenguard;
+package cordova.plugin.screenguard;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
