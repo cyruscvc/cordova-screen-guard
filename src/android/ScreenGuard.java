@@ -19,7 +19,6 @@ public class ScreenGuard extends CordovaPlugin {
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    // THIS IS THE ONLY LINE THAT MATTERS
                     cordova.getActivity().getWindow().setFlags(
                         WindowManager.LayoutParams.FLAG_SECURE,
                         WindowManager.LayoutParams.FLAG_SECURE
@@ -45,8 +44,6 @@ public class ScreenGuard extends CordovaPlugin {
 
         return false;
     }
-
-    // Keep blocking even when app resumes (very important!)
     @Override
     public void onResume(boolean multitasking) {
         cordova.getActivity().getWindow().setFlags(
