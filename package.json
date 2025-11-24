@@ -1,21 +1,11 @@
 {
   "name": "cordova-screen-guard",
   "version": "1.1.0",
-  "description": "Cordova plugin to block screenshots on Android and detect screen capture events on iOS.",
+  "description": "Blocks screenshots on Android and detects screen capture on iOS",
   "cordova": {
     "id": "cordova-screen-guard",
-    "platforms": [
-      "android",
-      "ios"
-    ]
+    "platforms": ["android", "ios"]
   },
-  "keywords": [
-    "cordova",
-    "plugin",
-    "screenshots",
-    "security",
-    "screen guard",
-    "outsystems"
-  ],
+  "keywords": ["cordova", "screenshot", "security", "outsystems"],
   "license": "MIT"
 }
