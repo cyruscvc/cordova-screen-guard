@@ -15,7 +15,7 @@
     </platform>
 
     <platform name="android">
-        <source-file src="src/android/ScreenGuard.java" target-dir="src/com/cordova/screenguard" />
+        <source-file src="src/android/ScreenGuard.java" target-dir="src/cordova/plugin/screenguard" />
     </platform>
 
 </plugin>
