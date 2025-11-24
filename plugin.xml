@@ -6,7 +6,7 @@
     <name>Screen Guard</name>
     <description>Prevents screenshots on Android and detects screen capture events on iOS.</description>
 
-    <js-module src="www/screenguard.js" name="ScreenGuard">
+    <js-module src="www/ScreenGuard.js" name="ScreenGuard">
         <clobbers target="ScreenGuard" />
     </js-module>
 
